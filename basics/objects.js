@@ -145,10 +145,10 @@
 // when you have only statement you can convert into lambda function.
 // also instead of return keyword, you can put parenthesis, and remove return keywords
 
-const addTwoNumbers = (num1, num2) => ({
-    num1,
-    num2
-}); // wrap this line with parenthesis to return any kind of data, like objects and useful in react framework
+// const addTwoNumbers = (num1, num2) => ({
+//     num1,
+//     num2
+// }); // wrap this line with parenthesis to return any kind of data, like objects and useful in react framework
 
 
-console.log(addTwoNumbers(3, 4));
+// console.log(addTwoNumbers(3, 4));
