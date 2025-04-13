@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit & Remove Elements</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <ul class="language"></ul>
+</body>
+<script>
+    // first way of creating new element, however this is not the best way to do it, adding through
+    // the textNode is the recommended way
+    function addLiElement(languageName) {
+        const li = document.createElement('li');
+        li.innerHTML = `${languageName}`;
+        document.querySelector('.language').appendChild(li);   
+    }
+
+    addLiElement('JavaScript');
+    addLiElement('TypeScript');
+    // little optimal way compared to the above one.
+    function addLiElementInOptimalWay(languageName) {
+        const li = document.createElement('li');
+        document.querySelectorAll('.language').appendChild(li.appendChild(document.createTextNode(languageName)));
+    }
+    addLiElement('JavaScript');
+    addLiElement('TypeScript');
+
+    // edit and removinf elements in the DOM
+    // first way, which was not recommended, but it works
+    const secondLi = document.querySelector('li:nth-child(2)');
+    secondLi.innerHTML = 'JAVASCRIPT';
+
+    // LITTLE EFFICIENT WAY OF DOING IT
+    const lastLi = document.querySelector('li:last-child');
+    const newLastLi = document.createElement('li')
+    newLastLi.appendChild(document.createTextNode('pojo'));
+    lastLi.replaceWith(newLastLi);
+
+    // removing elements in the DOM
+    const firstLi = document.querySelector('li:last-child');
+    // <!-- firstLi.remove() -->
+</script>
+</html>
