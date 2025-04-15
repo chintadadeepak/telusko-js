@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVENTS PROPAGATION</title>
+</head>
+<body>
+    <ul class="images">
+        <li><img id="jump" src="https://imgs.search.brave.com/VxN5avLBSj7JJoNzLYxOZBud7yKjGqR-KmsWJgztmkU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQz/MTc3Mjg2L3Bob3Rv/L2J1c2luZXNzbWFu/LWxlYXBpbmctb2Zm/LWEtYm91bGRlci5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/dy1hY1hvMElYRVhH/WGk2Rkd1bnNQLU5u/NmhHNW16NGJ0TTFv/VnpDd3YwQT0" alt=""></li>
+        <li><img id="care" src="https://imgs.search.brave.com/pvM2ige6Zgc0WDsQvHfNo5w3cSusRDzaMfSvftzGAog/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzAzL2Zm/LzA4LzAzZmYwOGFk/NmExYTZlMjg2ZmRi/NzE4NTc4MzVkNzYz/LmpwZw" alt=""></li>
+        <li><img id="chance" src="https://imgs.search.brave.com/SWf4ticc--Qif0Uq9zzNLYckGIu_6LnM2zQOLJ4D0dE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNTA2/MjEwNzUzL3Bob3Rv/L3NlY29uZC1jaGFu/Y2UuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPXM4SXRoN2p1/bXNpZmNHUWxrR3ho/dGVvRG1MMXM1X3g3/aDR2Rl9xV1JJNjQ9" alt=""></li>
+        <li><img id="clouds" src="https://imgs.search.brave.com/M-YEECG64aTr-AQxjsslGBKCMbEKg4lTcG75J6k13mk/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvODc4/NjA3NjM4L3Bob3Rv/L2Nsb3Vkcy1hZXJp/YWwtdmlldy5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9bDVP/VnZqbDJUa0hNeXhU/Q3pJNExoMXB4Ujhj/OFZxMU5BM1NWWEJo/U0w4Yz0" alt=""></li>
+        <p>Google</p>
+    </ul>
+</body>
+<script>
+    /* 
+    THIS CONCEPT WAS BUBBLING, AS BUBBLE TRAVELS FROM BOTTOM TO UP, HENCE LI ITEM WILL BE CALLED FIRST THEN UL
+    const ul = document.querySelector('ul')
+    ul.addEventListener('click', function(e) {
+        console.log(`CLICKED ON UL`)   
+    }, false)
+    const liNodes = ul.childNodes
+    liNodes.forEach((li) => {
+        li.addEventListener('click', function() {
+            console.log('CLICKED ON LI')
+        }, false)
+    }) */
+     // capturing is top down approach, as li is part of ul, ul will be called first, then li
+     const ul = document.querySelector('ul')
+        ul.addEventListener('click', function (e) {
+            console.log(`CLICKED ON UL`)
+        }, true)
+        const liNodes = ul.childNodes
+        liNodes.forEach((li) => {
+            li.addEventListener('click', function (e) {
+                if(e.target.tagName === 'IMG') {
+                    const liItem = e.target.parentNode
+                    liItem.remove()
+                }
+            }, true)
+        })
+</script>
+</html>
