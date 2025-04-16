@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Projects</title>
+    <style>
+        body {
+            background-color: #212121;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="key-clicked"></div>
+    <!-- <h2 id="title">Chai Aur Code</h2>
+    <button type="submit" id="start">Start</button> -->
+    <!-- <button type="submit" id="stop">Stop</button> -->
+</body>
+<script>
+    /* const timeOutRef = setTimeout(function() {
+        document.getElementById('title').innerText = `BEST YOUTUBE CHANNEL`
+    }, 5000)
+
+    document.querySelector('button').addEventListener('click', function(e) {
+        clearTimeout(timeOutRef);
+        console.log(`CLEARED..`)
+    }) */
+
+    /* let timeOutRef;
+
+    const generateRandomColor = function () {
+        let color = '#'
+        const hexValues = '123456789ABCDEF'
+        for(let i = 0; i < 6; i++) 
+            color += hexValues[Math.floor(Math.random() * 16)]
+        return color
+    }
+
+    document.querySelector('#start').addEventListener('click', function(e) {
+        if(!timeOutRef) {
+            timeOutRef = setInterval(function () {
+                document.querySelector('body').style.backgroundColor = generateRandomColor()
+            }, 1000)
+        }
+    })
+
+
+    document.querySelector('#stop').addEventListener('click', function(e) {
+        clearTimeout(timeOutRef)
+        timeOutRef = null
+    }) */
+
+    document.addEventListener('keydown', function(e) {
+        document.querySelector('#key-clicked').innerHTML = `<div>
+            <p>${e.key === ' ' ? 'space' : e.key}</p>
+            <p>${e.keyCode}</p>
+            <p>${e.code}</p>
+        </div>`
+    })
+
+</script>
+</html>
