@@ -6,22 +6,23 @@
     <title>XMLHTTPRequest</title>
 </head>
 <body>
-    <script>
-        const requestUrl = `https://api.github.com/users/chintadadeepak`
-        const xmlHttpRequest = new XMLHttpRequest();
-        let data;
-        // mention what was the http method and corresponding you want to request through open()
-        xmlHttpRequest.open('GET', requestUrl)
-        xmlHttpRequest.send()
-        xmlHttpRequest.onreadystatechange = () => {
-            if(xmlHttpRequest.readyState === 4) {
-                console.log(`request successfull`)
-                data = JSON.parse(xmlHttpRequest.responseText)
-                console.log(data.followers)
-                // <!-- console.log(data) -->
-            }
-        }
-        
-    </script>
+    <div id="profile"></div>
 </body>
+<script>
+    const xhr = new XMLHttpRequest();
+    const requestUrl = 'https://api.github.com/users/hiteshchoudhary'
+    let data;
+    xhr.open('GET', requestUrl)
+    xhr.send()
+    xhr.onreadystatechange = function () {
+        console.log(`current state : ${xhr.readyState}`)
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            data = JSON.parse(this.responseText)
+            document.getElementById('profile').innerHTML = `<img style="height: 200px; width: 250px; border-radius: 10px" src=${data.avatar_url} />
+            <p>followers: ${data.followers}`
+        }
+    }
+    console.log(data.followers)
+
+</script>
 </html>
