@@ -46,28 +46,46 @@
 //   }
 // });
 
-// fourthPromise
-//   .then(function () {
-//     console.log(`fourth promise consumed`);
-//   })
-//   .catch(function (errorMessage) {
-//     console.log(`response from async function: ${errorMessage}`);
-//   });
-
-// async function fifthPromise() {
-//   try {
+// const fifthPromise = new Promise(function (resolve, reject) {
+//   const error = true;
+//   if (!error) {
 //     setTimeout(function () {
-//       return "async process executed";
-//     }, 0);
+//       console.log(`first promise creation`);
+//       resolve();
+//     }, 1000);
+//   } else {
+//     reject(`Oops, something went wrong`);
+//   }
+// });
+
+// async function consumeFifthPromise() {
+//   try {
+//     const response = await fifthPromise;
+//     console.log(response);
 //   } catch (error) {
-//     return error;
+//     console.log(error);
 //   }
 // }
 
-// fetch("https://api.github.com/users/hiteshchoudhary")
-//   .then(function (response) {
-//     console.log(response.body);
-//   })
-//   .catch(function (error) {
+// consumeFifthPromise();
+
+// async function fetchGithubProfileData() {
+//   try {
+//     const response = await fetch("https://api.github.com/users/chintadadeepak");
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (error) {
 //     console.log(error);
-//   });
+//   }
+// }
+
+// fetchGithubProfileData();
+
+// handling above function with .then and .catch
+
+fetch(`https://api.github.com/users/chintadadeepak`)
+  .then((response) => {
+    return response.json();
+  })
+  .then((actualData) => console.log(actualData))
+  .catch((error) => console.log(`${error} : OOPS, SOMETHING WENT WRONG!`));
