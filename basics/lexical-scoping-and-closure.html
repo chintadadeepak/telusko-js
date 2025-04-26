@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>Closure</title>
+</head>
+<body>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+    function clickHandler(color) {
+        return function() {
+            document.querySelector('body').style.backgroundColor = `${color}`
+        }
+    }
+
+    document.querySelector('#orange').addEventListener('click', clickHandler('orange'))
+    document.querySelector('#green').addEventListener('click', clickHandler('green'))
+</script>
+</html>
+
+
+<!-- // LEXICAL SCOPING
+/* function outer() {
+const username = 'deepak'
+function inner() {
+console.log(username)
+}
+// the inner function was able to access the username, which was out off it's scope,
+// one reason was as it was parent, and in technical terms, it was called as
+// lexical scoping
+inner();
+}
+outer() */
+
+// CLOSURE
+/* function outer() {
+const username = 'deepak'
+function inner() {
+console.log(username)
+}
+return inner;
+}
+const outerResult = outer(); // at this point itself, the function execution of outer was completed,
+// which means the execution context of outer was removed from the callstack, however JS was so intellectual that,
+// as in the line number 29, as the function reference returned, JS believes that, it's definition might be executed
+outside the current
+// function, due to that one particular reason, it stores all the parent scope data i.e. outer function data in the
+memory,
+// for the future execution use.
+outerResult() */
+
+// REALTIME EXAMPLE FOR LEXICAL SCOPING AND CLOSURE. -->
